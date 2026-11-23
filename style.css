@@ -28,12 +28,12 @@ body {
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
-  gap: clamp(1rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 25%);
+  gap: clamp(1rem, 2.5vw, 2rem);
   align-items: center;
 }
 
-.intro-copy { grid-column: 1; grid-row: 1; max-width: 41rem; }
+.intro-copy { grid-column: 1; grid-row: 1; }
 
 .scene {
   position: relative;
