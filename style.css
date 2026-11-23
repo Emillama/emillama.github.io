@@ -26,12 +26,22 @@ body {
   height: auto;
 }
 
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: clamp(1rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.intro-copy { grid-column: 1; grid-row: 1; max-width: 41rem; }
+
 .scene {
-  position: absolute;
-  inset-block-start: clamp(8rem, 15vw, 12rem);
-  inset-inline-start: 5%;
-  width: 36%;
-  max-width: 27rem;
+  position: relative;
+  width: 100%;
+  max-width: 23rem;
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .portrait {
@@ -55,9 +65,8 @@ body {
   transform: rotate(-6deg);
 }
 
-.bio {
+.bio > p, .san-diego, .photo-row {
   max-width: 41rem;
-  margin-inline-start: max(40%, calc(100% - 41rem));
 }
 
 h1 {
@@ -130,13 +139,17 @@ a:focus-visible {
 .social a { padding-block: .5rem; }
 .social span { color: #786d60; }
 
-.pine {
-  position: absolute;
-  width: 19%;
-  inset-inline-start: 5%;
-  inset-block-start: clamp(27rem, 48vw, 39rem);
-  transform: rotate(-5deg);
+.san-diego {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 24%) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(.65rem, 2vw, 1.5rem);
+  margin-block-end: 1.15rem;
 }
+
+.san-diego p, .intro-copy p:last-child { margin-block-end: 0; }
+.intro { margin-block-end: 1.15rem; }
+.pine { transform: rotate(-5deg); }
 
 @media (max-width: 48rem) {
   .page {
@@ -144,33 +157,36 @@ a:focus-visible {
     padding-block-start: 4.75rem;
   }
 
-  .bio { margin-inline-start: 0; }
-
-  .scene {
-    position: relative;
-    inset: auto;
-    float: right;
-    width: clamp(6rem, 31%, 10rem);
-    margin: .15rem 0 .65rem .8rem;
+  .intro {
+    grid-template-columns: minmax(0, 1fr) minmax(5rem, 28%);
+    align-items: start;
   }
 
-  .portrait {
-    width: 66%;
-    margin-inline-start: 30%;
-  }
-
+  .scene { margin-block-start: .35rem; }
+  .portrait { width: 66%; margin-inline-start: 30%; }
   .bridge { width: 64%; }
 
   .branch {
     width: clamp(6rem, 30vw, 9rem);
     inset-block-start: .55rem;
   }
+}
+
+@media (max-width: 36rem) {
+  .intro { display: flow-root; }
+  .intro-copy { display: contents; }
+
+  .scene {
+    float: right;
+    width: 30%;
+    margin: .15rem 0 .65rem .8rem;
+  }
+
+  .san-diego { display: flow-root; }
 
   .pine {
-    position: static;
     float: left;
-    clear: both;
-    width: clamp(4.5rem, 25%, 8rem);
+    width: 25%;
     margin: .2rem .9rem .35rem 0;
   }
 }
